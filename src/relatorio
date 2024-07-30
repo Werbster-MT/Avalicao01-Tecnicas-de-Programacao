@@ -1,0 +1,43 @@
+Este relatório aborda o projeto e a implementação de um sistema em Java para geração e manipulação de diferentes tipos de distribuições estatísticas, tais como Normal, Uniforme, Exponencial e Poisson. O sistema foi desenvolvido com base em princípios fundamentais da programação orientada a objetos, incluindo herança, classes abstratas, polimorfismo e generics.
+
+Estrutura do Sistema
+1. Classe Abstrata Distribuicao
+A classe Distribuicao foi concebida como uma classe abstrata que define a interface comum para todas as distribuições estatísticas. Ela inclui tanto métodos abstratos quanto concretos, que serão utilizados por suas subclasses:
+
+Método abstrato gerarValores(int n): Deve ser implementado por todas as subclasses para gerar um array de valores da distribuição específica.
+Método calcularMedia(float[] valores): Calcula a média dos valores gerados.
+Método calcularVariancia(float[] valores): Calcula a variância dos valores gerados.
+Método imprimirValores(float[] valores): Imprime os valores gerados, formatando-os com duas casas decimais.
+A escolha por uma classe abstrata permite que a estrutura comum e as funcionalidades compartilhadas sejam definidas em um único local, enquanto os detalhes específicos de cada distribuição são tratados em subclasses.
+
+2. Subclasses de Distribuicao
+Foram criadas quatro subclasses para representar cada tipo de distribuição:
+
+DistribuicaoNormal: Representa uma distribuição normal, utilizando a média e o desvio padrão fornecidos.
+DistribuicaoUniforme: Representa uma distribuição uniforme, definida pelos valores mínimo e máximo.
+DistribuicaoExponencial: Representa uma distribuição exponencial, utilizando uma taxa lambda.
+DistribuicaoPoisson: Representa uma distribuição de Poisson, definida pelo parâmetro lambda.
+Cada uma dessas subclasses implementa o método gerarValores(int n) de maneira específica para gerar os valores conforme a distribuição estatística correspondente.
+
+3. Classe Estatisticas
+A classe Estatisticas foi projetada para operar de maneira genérica sobre qualquer tipo de distribuição que estenda Distribuicao. Esta classe:
+
+Armazena uma instância de uma distribuição.
+Gera e imprime valores da distribuição.
+Calcula e imprime a média e a variância dos valores gerados.
+A utilização de generics (T extends Distribuicao) permite que Estatisticas seja flexível e possa trabalhar com qualquer tipo de distribuição, promovendo o polimorfismo.
+
+4. Classe Main
+A classe Main serve como ponto de entrada para o programa e é utilizada para testar a funcionalidade do sistema. Ela:
+
+Cria instâncias de cada tipo de distribuição.
+Utiliza a classe Estatisticas para gerar, imprimir e calcular estatísticas das distribuições.
+Imprime os resultados no console.
+Escolhas de Design
+Uso de Classe Abstrata: A utilização de uma classe abstrata (Distribuicao) permite a definição de métodos comuns a todas as distribuições, garantindo que cada distribuição implemente suas próprias versões do método gerarValores.
+
+Polimorfismo: O uso de polimorfismo é evidente na forma como a classe Estatisticas trabalha com diferentes tipos de distribuições sem precisar conhecer os detalhes de implementação de cada uma. Isso torna o código mais flexível e extensível.
+
+Generics: A aplicação de generics na classe Estatisticas permite que ela seja usada com qualquer tipo de distribuição, reforçando o princípio de programação para interfaces e não para implementações.
+
+Separação de Responsabilidades: A lógica de geração de valores e cálculo de estatísticas está claramente separada em diferentes classes. Isso facilita a manutenção e a extensibilidade do código.
